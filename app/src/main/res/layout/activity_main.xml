@@ -9,7 +9,7 @@
     tools:context=".MainActivity">
 
     <LinearLayout
-        android:id="@+id/cardView"
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/rounded_title"
@@ -39,33 +39,35 @@
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
-            android:background="@drawable/rounded_edittext"
+            android:background="@drawable/rounded_bg_light_green"
             android:gravity="center"
             android:minHeight="48dp"
             android:padding="10dp"
             android:text="Улицы"
             android:textColor="@color/gray"
             tools:ignore="SpeakableTextPresentCheck" />
+
     </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="150dp"
         android:backgroundTint="@color/colorButton"
         android:src="@drawable/ic_add"
+        android:layout_marginBottom="150dp"
+        android:layout_marginEnd="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

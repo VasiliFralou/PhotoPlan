@@ -11,4 +11,6 @@
     <color name="creamColor">#FFEFE6E1</color>
     <color name="colorButton">#FF1B1A1A</color>
     <color name="iconColor">#FFFECF56</color>
+    <color name="redColor">#FFCF6666</color>
+    <color name="lightGreenColor">#FFEEF3F4</color>
 </resources>
