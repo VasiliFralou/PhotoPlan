@@ -1,4 +1,4 @@
-package by.vfdev.photoplantest
+package by.vfdev.photoplantest.Utils
 
 import android.util.Log
 import androidx.annotation.MainThread

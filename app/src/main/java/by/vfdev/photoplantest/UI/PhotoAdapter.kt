@@ -8,13 +8,12 @@ import androidx.core.net.toUri
 import androidx.recyclerview.widget.RecyclerView
 import by.kirich1409.viewbindingdelegate.viewBinding
 import by.vfdev.photoplantest.LocalModel.Location.Location
-import by.vfdev.photoplantest.LocalModel.Photo.Photo
 import by.vfdev.photoplantest.R
 import by.vfdev.photoplantest.databinding.ItemImageBinding
 
 
 class PhotoAdapter(
-    private val onClick: (photo: Photo) -> Unit
+    private val onClick: (photo: Location.Photo) -> Unit
 ) : RecyclerView.Adapter<PhotoAdapter.ViewHolder>() {
 
     private val list: MutableList<Location.Photo> = mutableListOf()
@@ -34,9 +33,8 @@ class PhotoAdapter(
 
         val inflater = LayoutInflater.from(parent.context)
         val itemView = inflater.inflate(R.layout.item_image, parent, false)
-        val holder = PhotoAdapter.ViewHolder(itemView)
 
-        return holder
+        return ViewHolder(itemView)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {

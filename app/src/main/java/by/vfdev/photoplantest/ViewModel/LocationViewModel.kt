@@ -8,25 +8,21 @@ import androidx.activity.result.ActivityResult
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import by.vfdev.photoplantest.LiveDataUtils.asLiveData
+import by.vfdev.photoplantest.Utils.LiveDataUtils.asLiveData
 import by.vfdev.photoplantest.LocalModel.Location.Location
 import by.vfdev.photoplantest.Repository.LocationRepository
-import by.vfdev.photoplantest.Repository.PhotoRepository
-import by.vfdev.photoplantest.SingleLiveEvent
+import by.vfdev.photoplantest.Utils.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class LocationViewModel @Inject constructor(
-    private val locationRepository: LocationRepository,
-    private val photoRepository: PhotoRepository
-) : ViewModel() {
+    private val locationRepository: LocationRepository) : ViewModel() {
 
+    private var choosePosition: Int? = null
 
-    private val _locationLive: MutableLiveData<List<Location>> = MutableLiveData<List<Location>>(
-
-    )
+    private val _locationLive: MutableLiveData<List<Location>> = MutableLiveData<List<Location>>()
     val locationLive = _locationLive.asLiveData()
 
 
@@ -40,9 +36,6 @@ class LocationViewModel @Inject constructor(
         choosePosition = position
         _onOpenGalleryEvent.value = intent
     }
-
-
-    private var choosePosition: Int? = null
 
 
     fun addImage(result: ActivityResult) {
@@ -77,7 +70,7 @@ class LocationViewModel @Inject constructor(
     }
 
 
-    fun getAllLocation() {
+    private fun getAllLocation() {
         viewModelScope.launch {
             val data = locationRepository.getDataLocal()
 
