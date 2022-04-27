@@ -8,8 +8,8 @@ import androidx.room.Query
 interface IStreetDao {
 
     @Insert
-    suspend fun insertStreet(loc: List<Street>)
+    fun insertStreet(st: Street)
 
     @Query("SELECT * FROM street")
-    suspend fun getAllStreet() : List<Street>
+    fun getAllStreet() : List<Street>
 }

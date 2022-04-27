@@ -8,8 +8,8 @@ import androidx.room.Query
 interface IPhotoDao {
 
     @Insert
-    suspend fun insertPhoto(ph: List<Photo>)
+    fun insertPhoto(ph: Photo)
 
     @Query("SELECT * FROM photo")
-    suspend fun getAllPhoto() : List<Photo>
+    fun getAllPhoto() : List<Photo>
 }

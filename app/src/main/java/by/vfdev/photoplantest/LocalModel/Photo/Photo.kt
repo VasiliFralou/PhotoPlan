@@ -5,5 +5,5 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "photo")
 class Photo(
-    @PrimaryKey(autoGenerate = true) val primaryKey: Int = 0,
-    val uri: String? = null)
+    val uri: String? = null,
+    @PrimaryKey(autoGenerate = true) val primaryKey: Int = 0)
