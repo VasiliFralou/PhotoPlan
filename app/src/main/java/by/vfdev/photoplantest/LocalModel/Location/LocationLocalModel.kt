@@ -8,6 +8,10 @@ class LocationLocalModel @Inject constructor(@ApplicationContext context: Contex
 
     private val database = LocationDatabase.getDataBase(context).locationDao()
 
+    suspend fun insertLocation(loc: MutableList<Location>) {
+        database.insertLocation(loc)
+    }
+
     suspend fun getAllLocation(): List<Location> {
         return database.getAllLocation()
     }

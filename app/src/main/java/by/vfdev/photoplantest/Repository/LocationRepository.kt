@@ -15,4 +15,11 @@ class LocationRepository @Inject constructor(
 
         return@withContext Result.success(locationList)
     }
+
+    suspend fun saveData(loc: MutableList<Location>):
+            Result<MutableList<Location>> = withContext(Dispatchers.IO) {
+        locationLocalModel.insertLocation(loc)
+
+        return@withContext Result.success(loc)
+    }
 }

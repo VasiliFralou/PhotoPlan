@@ -5,5 +5,5 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "street")
 class Street (
-    @PrimaryKey(autoGenerate = true) val primaryKey: Int = 0,
-    val name: String? = null)
+    val name: String? = null,
+    @PrimaryKey(autoGenerate = true) val primaryKey: Int = 0)

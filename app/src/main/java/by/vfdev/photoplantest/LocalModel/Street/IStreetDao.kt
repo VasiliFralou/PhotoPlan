@@ -12,4 +12,7 @@ interface IStreetDao {
 
     @Query("SELECT * FROM street")
     fun getAllStreet() : List<Street>
+
+    @Query("DELETE FROM street")
+    fun delete()
 }

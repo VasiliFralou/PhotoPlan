@@ -45,30 +45,42 @@ class LocationViewModel @Inject constructor(
                 val count = data.clipData!!.itemCount
                 for (i in 0 until count) {
                     val imageUri: Uri = data.clipData!!.getItemAt(i).uri
-
+                    addPhoto(imageUri)
                 }
 
             } else if (data?.data != null) {
                 val imageUri: Uri? = data.data
-
-                _locationLive.value = _locationLive.value?.toMutableList().apply {
-                    val name = this?.getOrNull(choosePosition!!)?.NameLocation
-                    val photoList: MutableList<Location.Photo> =
-                        this?.getOrNull(choosePosition!!)?.photoList?.toMutableList()
-                            ?: mutableListOf()
-                    photoList.add(Location.Photo(imageUri.toString()))
-                    val editLocation = Location(
-                        NameLocation = name,
-                        photoList = photoList
-                    )
-
-                    this?.removeAt(choosePosition!!)
-                    this?.add(choosePosition!!, editLocation)
-                }
+                addPhoto(imageUri!!)
             }
         }
     }
 
+    private fun addPhoto(imageUri: Uri) {
+        _locationLive.value = _locationLive.value?.toMutableList().apply {
+            val name = this?.getOrNull(choosePosition!!)?.NameLocation
+            val photoList: MutableList<Location.Photo> =
+                this?.getOrNull(choosePosition!!)?.photoList?.toMutableList()
+                    ?: mutableListOf()
+            photoList.add(Location.Photo(imageUri.toString()))
+            val editLocation = Location(
+                NameLocation = name,
+                photoList = photoList
+            )
+            this?.removeAt(choosePosition!!)
+            this?.add(choosePosition!!, editLocation)
+
+        }
+    }
+
+    fun saveLocation(loc: String) {
+
+    }
+
+    private fun saveData(loc: MutableList<Location>) {
+        viewModelScope.launch {
+            locationRepository.saveData(loc)
+        }
+    }
 
     private fun getAllLocation() {
         viewModelScope.launch {
